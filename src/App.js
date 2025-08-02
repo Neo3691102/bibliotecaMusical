@@ -1,25 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/header/Header';
+import Song from './components/song/Song';
+import picture from './img/beethoven-ludwig-van.jpg';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Header />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Song songName="Moonlight Sonata" artist="Beethoven" duration="5:00" picture={picture} />
     </div>
   );
 }
