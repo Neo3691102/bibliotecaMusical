@@ -4,6 +4,7 @@
 
 .header {
   color: white;
+  padding: 24px;
 }
 
 .songList{
@@ -38,10 +39,18 @@
   color: white;
 }
 
+.album{
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
 .duration {
   font-size: 15px;
   font-weight: bold;
   color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .picture{
