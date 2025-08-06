@@ -1,17 +1,15 @@
 
 import './App.css';
-import React, {Component} from 'react';
 import Header from './components/header/Header';
 import Song from './components/song/Song';
 import picture from './img/beethoven-ludwig-van.jpg';
 
-class App extends Component {
-  componentDidMount(){
-    console.log("La aplicacion se cargó correctamente");
-  }
+const App = () => {
+  //componentDidMount(){
+   // console.log("La aplicacion se cargó correctamente");
+  //}
 
 
-  render() {
     return (
     <div className="App">
       <Header />
@@ -23,7 +21,7 @@ class App extends Component {
       
     </div>
   )
-  }
+  
   
 }
 
