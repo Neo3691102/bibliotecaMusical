@@ -10,10 +10,11 @@
 .songList{
   width: 80%;
   margin: 0 auto;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  row-gap: 30px;
+  padding: 20px;
 }
 
 .songCard{
