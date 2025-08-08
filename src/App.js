@@ -2,6 +2,7 @@
 import './App.css';
 import Header from './components/header/Header';
 import SearchResults from './components/searchResults/searchResults';
+import Library from './components/library/Library';
 import picture from "./img/beethoven-ludwig-van.jpg";
 
 
@@ -64,6 +65,11 @@ const App = () => {
     return (
     <div className="App">
       <Header />
+
+      <div>
+        <Library />
+      </div>
+
       <div className="songList">
         <SearchResults songs={songList} />
       </div>
