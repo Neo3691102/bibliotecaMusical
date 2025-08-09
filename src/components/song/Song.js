@@ -1,4 +1,4 @@
-
+import song from "./song.css";
 
 const Song = (props) => {
    
@@ -10,6 +10,7 @@ const Song = (props) => {
                 <p className="artist">{props.artist}</p>
                 <p className ="album">{props.album}</p>
                 <p className="duration">{props.duration}</p>
+                <button className="button">Agregar a la biblioteca</button>
             </div>
         )
     
