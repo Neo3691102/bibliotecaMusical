@@ -5,7 +5,7 @@ const Library = (props) => {
     return(
         <>
             
-                <h2 className="library__title">Libreria</h2>
+                <h2 className="library__title">Biblioteca</h2>
                 <div className="library__container">
                     <LibrarySong songs={props.songs} />
                 </div>

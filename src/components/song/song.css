@@ -1,0 +1,49 @@
+.songCard{
+  width: 240px;
+  height: 360px;
+  background-color: rgb(64, 65, 78);
+  border-radius: 9px;
+  box-shadow: 0 4px 8px rgba(199, 194, 194, 0.973);
+  
+}
+
+.songTitle {
+  margin: 0; 
+  padding: 0;
+  color: white;
+}
+
+.artist{
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.album{
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.duration {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.picture{
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  padding: 9px;
+}
+
+.button{
+    color: white;
+    background-color: black;
+    padding: 6px;
+}
