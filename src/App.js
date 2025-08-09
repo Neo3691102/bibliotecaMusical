@@ -4,7 +4,7 @@ import Header from './components/header/Header';
 import SearchResults from './components/searchResults/searchResults';
 import Library from './components/library/Library';
 import picture from "./img/beethoven-ludwig-van.jpg";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const App = () => {
@@ -72,6 +72,11 @@ const App = () => {
     }
   };
 
+    useEffect(() => {
+  if (librarysongs.length > 0) {
+    console.log("Se ha agregado una canción a la biblioteca");
+  }
+}, [librarysongs]);
 
     return (
     <div className="App">
