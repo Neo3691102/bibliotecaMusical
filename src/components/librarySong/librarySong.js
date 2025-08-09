@@ -5,10 +5,10 @@ const librarySong = (props) => {
        
             <div className="librarysong__container">
                 {props.songs.map(song => {
-                    const {songName, artist, duration, album, picture} = song;
+                    const {id, songName, artist, duration, album, picture} = song;
                         return(
                             <>
-                                <div className="librarysongcard">
+                                <div className="librarysongcard" key={id}>
                                     <img className="librarysong__picture" src={picture} alt="imagen"/>
                                     <h2 className="librarysong__songTitle">{songName}</h2>
                                     <p className="librarysong__artist">{artist}</p>
