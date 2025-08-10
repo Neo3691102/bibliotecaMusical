@@ -16,6 +16,27 @@
     box-shadow: 0 4px 8px rgba(199, 194, 194, 0.973);
 }
 
+.searchcontainer{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+label[for="searchinput"] {
+  font-size: 24px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid white;
+  width: 100%;
+}
 
 
 .songList{
