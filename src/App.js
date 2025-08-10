@@ -86,6 +86,12 @@ const App = () => {
         <Library songs={librarysongs} />
       </div>
 
+      <div className="searchcontainer">
+        <label for="searchinput">Buscar cancion</label>
+        <input type="text" id="searchinput" placeholder="Buscar cancion" />
+      </div>
+      
+
       <div className="songList">
         <SearchResults songs={songList} onAddToLibrary={addToLibrary} />
       </div>
