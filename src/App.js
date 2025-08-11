@@ -6,79 +6,106 @@ import Library from './components/library/Library';
 import picture from "./img/beethoven-ludwig-van.jpg";
 import { useState, useEffect } from 'react';
 
+const initialSongList = [
+  {
+    id: 1,
+    songName: "Winter",
+    artist: "Vivaldi",
+    duration: "9:27",
+    album: "classic-songs",
+    picture: picture
+  },
+  {
+    id: 2,
+    songName: "Rondo Alla Turca",
+    artist: "Mozart",
+    duration: "3:32",
+    album: "classic-songs",
+    picture: picture
+  },
+  {
+    id: 3,
+    songName: "Lacrimosa",
+    artist: "Mozart",
+    duration: "4:05",
+    album: "classic-songs",
+    picture: picture
+  },
+  {
+    id: 4,
+    songName: "Moonlight Sonata",
+    artist: "Beethoven",
+    duration: "6:00",
+    album: "classic-songs",
+    picture: picture
+  },
+  {
+    id: 5,
+    songName: "Virus",
+    artist: "Beethoven",
+    duration: "3:35",
+    album: "classic-songs",
+    picture: picture
+  },
+  {
+    id: 6,
+    songName: "Apassionata",
+    artist: "Beethoven",
+    duration: "7:35",
+    album: "classic-songs",
+    picture: picture
+  }
+];
 
 const App = () => {
-  //componentDidMount(){
-   // console.log("La aplicacion se cargó correctamente");
-  //}
-    const songList = [
-      {
-        id: 1,
-        songName: "Winter",
-        artist: "Vivaldi",
-        duration: "9:27",
-        album: "classic-songs",
-        picture: picture
-      },
-      {
-        id: 2,
-        songName: "Rondo Alla Turca",
-        artist: "Mozart",
-        duration: "3:32",
-        album: "classic-songs",
-        picture: picture
-      },
-      {
-        id: 3,
-        songName: "Lacrimosa",
-        artist: "Mozart",
-        duration: "4:05",
-        album: "classic-songs",
-        picture: picture
-      },
-      {
-        id: 4,
-        songName: "Moonlight Sonata",
-        artist: "Beethoven",
-        duration: "6:00",
-        album: "classic-songs",
-        picture: picture
-      },
-      {
-        id: 5,
-        songName: "Virus",
-        artist: "Beethoven",
-        duration: "3:35",
-        album: "classic-songs",
-        picture: picture
-      },
-      {
-        id: 6,
-        songName: "Apassionata",
-        artist: "Beethoven",
-        duration: "7:35",
-        album: "classic-songs",
-        picture: picture
-      }
-    ]
-
-     const [librarysongs, setLibrary] = useState([]);
+  const [librarysongs, setLibrary] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filteredSongs, setFilteredSongs] = useState(initialSongList);
 
   // Función para agregar una canción a la biblioteca
   const addToLibrary = (song) => {
-    // Evita duplicados
     if (!librarysongs.some(s => s.id === song.id)) {
       setLibrary([...librarysongs, song]);
     }
   };
 
-    useEffect(() => {
-  if (librarysongs.length > 0) {
-    console.log("Se ha agregado una canción a la biblioteca");
-  }
-}, [librarysongs]);
+  useEffect(() => {
+    if (librarysongs.length > 0) {
+      console.log("Se ha agregado una canción a la biblioteca");
+    }
+  }, [librarysongs]);
 
-    return (
+  // Handler para el input de búsqueda
+  const handleInputChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  // Handler para buscar
+  const handleSearch = () => {
+    if (search.trim() === "") {
+      setFilteredSongs(initialSongList);
+      return;
+    }
+    const results = initialSongList.filter(song =>
+      song.songName.toLowerCase().includes(search.toLowerCase()) ||
+      song.artist.toLowerCase().includes(search.toLowerCase())
+    );
+    if (results.length === 0) {
+      alert("No se encontraron resultados");
+      setFilteredSongs(initialSongList);
+    } else {
+      setFilteredSongs(results);
+    }
+  };
+
+  // Permite buscar al presionar Enter
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  return (
     <div className="App">
       <Header />
 
@@ -87,20 +114,24 @@ const App = () => {
       </div>
 
       <div className="searchcontainer">
-        <label for="searchinput">Buscar cancion</label>
-        <input type="text" id="searchinput" placeholder="Buscar cancion" />
+        <label htmlFor="searchinput">Buscar cancion</label>
+        <input
+          type="text"
+          id="searchinput"
+          placeholder="Buscar cancion"
+          value={search}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+        />
+        <button className="searchbutton" onClick={handleSearch}>Buscar</button>
       </div>
-      
 
       <div className="songList">
-        <SearchResults songs={songList} onAddToLibrary={addToLibrary} />
+        <SearchResults songs={filteredSongs} onAddToLibrary={addToLibrary} />
       </div>
-      
     </div>
-  )
-  
-  
-}
+  );
+};
 
 export default App;
 //<div className="songList">

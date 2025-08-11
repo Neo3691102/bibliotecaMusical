@@ -38,6 +38,11 @@ input[type="text"] {
   width: 100%;
 }
 
+.searchbutton{
+  color: white;
+    background-color: black;
+    padding: 6px;
+}
 
 .songList{
   width: 80%;
