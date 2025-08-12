@@ -1,4 +1,11 @@
-
+.library{
+    background-color: rgb(64, 65, 78);
+    width: 80%;
+    height: 400px;
+    margin: 0 auto 21px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(199, 194, 194, 0.973);
+}
 
 .library__title{
     color: rgba(199, 194, 194, 0.973);
@@ -17,4 +24,10 @@
     border-bottom-right-radius: 15px;
     overflow-y: scroll;
     
+}
+
+@media screen and (max-width: 480px){
+    .library{
+        width: 90%;
+    }
 }

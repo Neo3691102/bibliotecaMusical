@@ -7,14 +7,7 @@
   padding: 24px;
 }
 
-.library{
-    background-color: rgb(64, 65, 78);
-    width: 80%;
-    height: 400px;
-    margin: 0 auto 21px auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(199, 194, 194, 0.973);
-}
+
 
 .searchcontainer{
   display: flex;
@@ -39,7 +32,7 @@ input[type="text"] {
 }
 
 .searchbutton{
-  color: white;
+    color: white;
     background-color: black;
     padding: 6px;
 }
@@ -52,5 +45,11 @@ input[type="text"] {
   justify-items: center;
   row-gap: 30px;
   padding: 20px;
+}
+
+@media screen and (max-width: 468px){
+  .songList{
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
