@@ -43,3 +43,38 @@
     position: relative;
     right: 20px;
 }
+
+@media screen and (max-width: 480px) {
+    .librarysong__container{
+        height: 100px;
+    }
+
+    .librarysongcard{
+        height: 100px;
+        
+    }
+
+    .librarysong__picture{
+    left: 10px;
+}
+
+    .librarysong__songTitle{
+    font-size: 12px;
+
+}
+
+.librarysong__artist{
+    font-size: 12px;
+
+}
+
+.librarysong__album{
+    font-size: 12px;
+  
+}
+
+.librarysong__duration{
+    font-size: 12px;
+    right: 10px;
+}
+}
