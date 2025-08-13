@@ -46,4 +46,7 @@
     color: white;
     background-color: black;
     padding: 6px;
+    cursor: pointer;
+    border-radius: 9px;
 }
+
