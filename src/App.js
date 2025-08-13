@@ -72,6 +72,7 @@ const App = () => {
   useEffect(() => {
     if (librarysongs.length > 0) {
       console.log("Se ha agregado una canción a la biblioteca");
+      alert("Cancion agregada a la biblioteca");
     }
   }, [librarysongs]);
 
