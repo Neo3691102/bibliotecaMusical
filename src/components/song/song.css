@@ -50,3 +50,8 @@
     border-radius: 9px;
 }
 
+.button:hover{
+  background-color: rgb(64, 65, 78);
+  color: white;
+}
+
