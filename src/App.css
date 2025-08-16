@@ -26,7 +26,6 @@ input[type="text"] {
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid white;
-  width: 100%;
 }
 
 .searchbutton {
@@ -39,7 +38,6 @@ input[type="text"] {
 .searchbutton:hover {
   background-color: rgb(64, 65, 78);
   cursor: pointer;
-  
 }
 
 .songList {
