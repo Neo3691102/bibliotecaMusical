@@ -1,12 +1,10 @@
 import Song from "../song/Song";
-import style from "../../components/searchResults/style.css";
+import style from "./style.css";
 
 const SearchResults = (props) => {
   return (
     <>
 
-        
-    
       <div className="searchcontainer">
         <label htmlFor="searchinput">Buscar cancion</label>
         <input
