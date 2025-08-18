@@ -1,4 +1,4 @@
-
+import header from './header.css'
 
 const Header = () => {
 

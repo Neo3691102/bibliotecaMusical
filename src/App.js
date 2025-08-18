@@ -1,10 +1,10 @@
-
-import './App.css';
-import Header from './components/header/Header';
-import SearchResults from './components/searchResults/searchResults';
-import Library from './components/library/Library';
+import "./App.css";
+import Header from "./components/header/Header";
+import SearchResults from "./components/searchResults/searchResults";
+import Library from "./components/library/Library";
 import picture from "./img/beethoven-ludwig-van.jpg";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 const initialSongList = [
   {
@@ -13,7 +13,7 @@ const initialSongList = [
     artist: "Vivaldi",
     duration: "9:27",
     album: "classic-songs",
-    picture: picture
+    picture: picture,
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const initialSongList = [
     artist: "Mozart",
     duration: "3:32",
     album: "classic-songs",
-    picture: picture
+    picture: picture,
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const initialSongList = [
     artist: "Mozart",
     duration: "4:05",
     album: "classic-songs",
-    picture: picture
+    picture: picture,
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const initialSongList = [
     artist: "Beethoven",
     duration: "6:00",
     album: "classic-songs",
-    picture: picture
+    picture: picture,
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const initialSongList = [
     artist: "Beethoven",
     duration: "3:35",
     album: "classic-songs",
-    picture: picture
+    picture: picture,
   },
   {
     id: 6,
@@ -53,8 +53,8 @@ const initialSongList = [
     artist: "Beethoven",
     duration: "7:35",
     album: "classic-songs",
-    picture: picture
-  }
+    picture: picture,
+  },
 ];
 
 const App = () => {
@@ -64,7 +64,7 @@ const App = () => {
 
   // Función para agregar una canción a la biblioteca
   const addToLibrary = (song) => {
-    if (!librarysongs.some(s => s.id === song.id)) {
+    if (!librarysongs.some((s) => s.id === song.id)) {
       setLibrary([...librarysongs, song]);
     }
   };
@@ -87,9 +87,10 @@ const App = () => {
       setFilteredSongs(initialSongList);
       return;
     }
-    const results = initialSongList.filter(song =>
-      song.songName.toLowerCase().includes(search.toLowerCase()) ||
-      song.artist.toLowerCase().includes(search.toLowerCase())
+    const results = initialSongList.filter(
+      (song) =>
+        song.songName.toLowerCase().includes(search.toLowerCase()) ||
+        song.artist.toLowerCase().includes(search.toLowerCase())
     );
     if (results.length === 0) {
       alert("No se encontraron resultados");
@@ -107,36 +108,31 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <>
       <Header />
-
-      <div className="library">
-        <Library songs={librarysongs} />
-      </div>
-
-      <div className="searchcontainer">
-        <label htmlFor="searchinput">Buscar cancion</label>
-        <input
-          type="text"
-          id="searchinput"
-          placeholder="Buscar cancion"
-          value={search}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Library songs={librarysongs} />
+              <SearchResults
+                songs={filteredSongs}
+                onAddToLibrary={addToLibrary}
+                search={search}
+                handleInputChange={handleInputChange}
+                handleKeyDown={handleKeyDown}
+                handleSearch={handleSearch}
+              />
+            </>
+          }
         />
-        <button className="searchbutton" onClick={handleSearch}>Buscar</button>
-      </div>
-
-      <div className="songList">
-        <SearchResults songs={filteredSongs} onAddToLibrary={addToLibrary} />
-      </div>
-    </div>
+      </Routes>
+    </>
   );
 };
 
+
+
+
 export default App;
-//<div className="songList">
-    //    <Song songName="Moonlight Sonata" artist="Beethoven" duration="6:00" album="classic-songs" picture={picture} />
-      //  <Song songName="Virus" artist="Beethoven" duration="3:35" album="classic-songs" picture={picture} />
-      //  <Song songName="Apassionata" artist="Beethoven" duration="7:35" album="classic-songs" picture={picture} />
-     // </div>
