@@ -1,0 +1,31 @@
+.sdetailcard {
+  width: 240px;
+  height: 400px;
+  background-color: rgb(64, 65, 78);
+  border-radius: 9px;
+  box-shadow: 0 4px 8px rgba(199, 194, 194, 0.973);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  margin: 0 auto;
+}
+
+.back {
+  width: 72px;
+  display: block;
+  color: #fff;
+  background-color: #3b5998;
+  padding: 6px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+  margin: 30px auto;
+}
+
+.back:hover {
+  background-color: #1d3557;
+  color: #ffd700;
+}

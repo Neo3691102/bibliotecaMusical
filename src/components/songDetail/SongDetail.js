@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom";
+import songdetail from './songdetail.css';
+import { Link } from "react-router-dom";
 
 const SongDetail = ({ songs }) => {
   const { id } = useParams();
@@ -7,13 +9,18 @@ const SongDetail = ({ songs }) => {
   if (!song) return <div>No se encontró la canción.</div>;
 
   return (
-    <div>
-      <h2>{song.songName}</h2>
-      <p>Artista: {song.artist}</p>
-      <p>Álbum: {song.album}</p>
-      <p>Duración: {song.duration}</p>
-      <img src={song.picture} alt={song.songName} style={{ width: 200 }} />
+    <>
+    <div className="sdetailcard">
+      <img className="picture" src={song.picture} alt={song.songName} style={{ width: 200 }} />
+      <h2 className="songTitle">{song.songName}</h2>
+      <p className="artist">Artista: {song.artist}</p>
+      <p className="album">Álbum: {song.album}</p>
+      <p className="duration">Duración: {song.duration}</p>
+      
     </div>
+    <Link className="back" to="/">Regresar</Link>
+    </>
+    
   );
 };
 
