@@ -20,6 +20,7 @@
 
 label[for="searchinput"] {
   font-size: 24px;
+  text-align: center;
 }
 
 input[type="text"] {
