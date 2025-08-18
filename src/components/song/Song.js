@@ -1,4 +1,5 @@
 import song from "./song.css";
+import { Link } from "react-router-dom";
 
 const Song = (props) => {
     return (
@@ -11,6 +12,7 @@ const Song = (props) => {
             <button className="button" onClick={props.onAddToLibrary}>
                 Agregar a la biblioteca
             </button>
+            <Link to={`/song/${props.id}`}>Ver detalles</Link>
         </div>
     );
 };
