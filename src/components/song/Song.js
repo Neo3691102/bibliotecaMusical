@@ -12,7 +12,7 @@ const Song = (props) => {
             <button className="button" onClick={props.onAddToLibrary}>
                 Agregar a la biblioteca
             </button>
-            <Link to={`/song/${props.id}`}>Ver detalles</Link>
+            <Link className="details-link" to={`/song/${props.id}`}>Ver detalles</Link>
         </div>
     );
 };
