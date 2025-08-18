@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/header/Header";
 import SearchResults from "./components/searchResults/searchResults";
 import Library from "./components/library/Library";
+import SongDetail from "./components/songDetail/SongDetail";
 import picture from "./img/beethoven-ludwig-van.jpg";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -126,6 +127,10 @@ const App = () => {
               />
             </>
           }
+        />
+        <Route
+          path="/song/:id"
+          element={<SongDetail songs={initialSongList} />}
         />
       </Routes>
     </>
