@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import axios from ' axios';
+import axios from 'axios';
 
 const useFetch = (url) => {
     const [albums, setAlbums] = useState([]);
@@ -9,15 +9,16 @@ const useFetch = (url) => {
     useEffect(() => {
         const fetchAlbums = async () => {
             try{
-                const response = await axios.get(`https://theaudiodb.com/api/v1/json/2/searchalbum.php?s=${url}`);
-                setAlbums(response.data.results);
+                const response = await axios.get(url);
+                setAlbums(response.data.album || []);
+                console.log(response.data.album);
             }catch (error){
                 setError(error);
             }
             setLoading(false);
         };
         fetchAlbums();
-    }, []);
+    }, [url]);
 
     return {albums, loading, error};
 }
