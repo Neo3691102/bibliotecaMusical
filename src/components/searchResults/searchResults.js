@@ -7,11 +7,11 @@ const SearchResults = (props) => {
     <>
       
       <div className="searchcontainer">
-        <label htmlFor="searchinput">Buscar cancion</label>
+        <label htmlFor="searchinput">Buscar album</label>
         <input
           type="text"
           id="searchinput"
-          placeholder="Buscar cancion"
+          placeholder="Buscar album"
           value={props.search}
           onChange={props.handleInputChange}
           onKeyDown={props.handleKeyDown}
@@ -22,11 +22,11 @@ const SearchResults = (props) => {
       </div>
 
       <div className="songList">
-        {props.songs.map((song) => (
+        {props.albums.map((album) => (
           <Song
-            key={song.id}
-            {...song}
-            onAddToLibrary={() => props.onAddToLibrary(song)}
+            key={album.id}
+            {...album}
+            onAddToLibrary={() => props.onAddToLibrary(album)}
           />
         ))}
       </div>

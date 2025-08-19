@@ -6,69 +6,31 @@ import SongDetail from "./components/songDetail/SongDetail";
 import picture from "./img/beethoven-ludwig-van.jpg";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-
-const initialSongList = [
-  {
-    id: 1,
-    songName: "Winter",
-    artist: "Vivaldi",
-    duration: "9:27",
-    album: "classic-songs",
-    picture: picture,
-  },
-  {
-    id: 2,
-    songName: "Rondo Alla Turca",
-    artist: "Mozart",
-    duration: "3:32",
-    album: "classic-songs",
-    picture: picture,
-  },
-  {
-    id: 3,
-    songName: "Lacrimosa",
-    artist: "Mozart",
-    duration: "4:05",
-    album: "classic-songs",
-    picture: picture,
-  },
-  {
-    id: 4,
-    songName: "Moonlight Sonata",
-    artist: "Beethoven",
-    duration: "6:00",
-    album: "classic-songs",
-    picture: picture,
-  },
-  {
-    id: 5,
-    songName: "Virus",
-    artist: "Beethoven",
-    duration: "3:35",
-    album: "classic-songs",
-    picture: picture,
-  },
-  {
-    id: 6,
-    songName: "Apassionata",
-    artist: "Beethoven",
-    duration: "7:35",
-    album: "classic-songs",
-    picture: picture,
-  },
-];
+import useFetch from "./hooks/useFetch";
 
 const App = () => {
+  const {
+    albums = [],
+    loading,
+    error,
+  } = useFetch(
+    `https://corsproxy.io/?https://theaudiodb.com/api/v1/json/2/searchalbum.php?s=coldplay`
+  );
+
   const [librarysongs, setLibrary] = useState([]);
   const [search, setSearch] = useState("");
-  const [filteredSongs, setFilteredSongs] = useState(initialSongList);
+  const [filteredSongs, setFilteredSongs] = useState([]); //aqui se manejaran los resultados de busqueda
 
   // Función para agregar una canción a la biblioteca
-  const addToLibrary = (song) => {
-    if (!librarysongs.some((s) => s.id === song.id)) {
-      setLibrary([...librarysongs, song]);
+  const addToLibrary = (album) => {
+    if (!librarysongs.some((s) => s.idAlbum === album.id)) {
+      setLibrary([...librarysongs, album]);
     }
   };
+
+  useEffect(() => {
+    setFilteredSongs(albums); //efecto secundario que cambia los resultados de búsqueda al cargar las canciones
+  }, [albums]);
 
   useEffect(() => {
     if (librarysongs.length > 0) {
@@ -85,17 +47,17 @@ const App = () => {
   // Handler para buscar
   const handleSearch = () => {
     if (search.trim() === "") {
-      setFilteredSongs(initialSongList);
+      setFilteredSongs(albums);
       return;
     }
-    const results = initialSongList.filter(
-      (song) =>
-        song.songName.toLowerCase().includes(search.toLowerCase()) ||
-        song.artist.toLowerCase().includes(search.toLowerCase())
+    const results = albums.filter(
+      (album) =>
+        album.strAlbum.toLowerCase().includes(search.toLowerCase()) ||
+        album.strArtist.toLowerCase().includes(search.toLowerCase())
     );
     if (results.length === 0) {
       alert("No se encontraron resultados");
-      setFilteredSongs(initialSongList);
+      setFilteredSongs(albums);
     } else {
       setFilteredSongs(results);
     }
@@ -108,6 +70,9 @@ const App = () => {
     }
   };
 
+  if (loading) return <div>Cargando...</div>;
+  if (error) return <div>Error al cargar canciones</div>;
+
   return (
     <>
       <Header />
@@ -118,7 +83,7 @@ const App = () => {
             <>
               <Library songs={librarysongs} />
               <SearchResults
-                songs={filteredSongs}
+                albums={filteredSongs}
                 onAddToLibrary={addToLibrary}
                 search={search}
                 handleInputChange={handleInputChange}
@@ -128,16 +93,10 @@ const App = () => {
             </>
           }
         />
-        <Route
-          path="/song/:id"
-          element={<SongDetail songs={initialSongList} />}
-        />
+        <Route path="/song/:id" element={<SongDetail albums={albums} />} />
       </Routes>
     </>
   );
 };
-
-
-
 
 export default App;

@@ -2,25 +2,23 @@ import { useParams } from "react-router-dom";
 import songdetail from './songdetail.css';
 import { Link } from "react-router-dom";
 
-const SongDetail = ({ songs }) => {
+const SongDetail = ({ albums }) => {
   const { id } = useParams();
-  const song = songs.find((s) => s.id === parseInt(id));
+  // Busca por idAlbum y compara como string
+  const album = albums.find((a) => String(a.idAlbum) === String(id));
 
-  if (!song) return <div>No se encontró la canción.</div>;
+  if (!album) return <div>No se encontró el álbum.</div>;
 
   return (
     <>
-    <div className="sdetailcard">
-      <img className="picture" src={song.picture} alt={song.songName} style={{ width: 200 }} />
-      <h2 className="songTitle">{song.songName}</h2>
-      <p className="artist">Artista: {song.artist}</p>
-      <p className="album">Álbum: {song.album}</p>
-      <p className="duration">Duración: {song.duration}</p>
-      
-    </div>
-    <Link className="back" to="/">Regresar</Link>
+      <div className="sdetailcard">
+        <img className="picture" src={album.strAlbumThumb} alt={album.strAlbum} style={{ width: 200 }} />
+        <h2 className="songTitle">{album.strAlbum}</h2>
+        <p className="artist">{album.strArtist}</p>
+       
+      </div>
+      <Link className="back" to="/">Regresar</Link>
     </>
-    
   );
 };
 
