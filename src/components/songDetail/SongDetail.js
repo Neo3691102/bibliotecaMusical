@@ -44,8 +44,8 @@ const SongDetail = ({ albums }) => {
         <h2 className="songTitle">{album.strAlbum}</h2>
         <p className="artist">{album.strArtist}</p>
       </div>
-      <h3>Canciones del álbum:</h3>
-      <table>
+      <h3 className="subtitle">Canciones del álbum:</h3>
+      <table className="songTable">
         <thead>
           <tr>
             <th>#</th>
