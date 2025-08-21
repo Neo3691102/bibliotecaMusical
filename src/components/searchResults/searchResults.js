@@ -11,7 +11,7 @@ const SearchResults = (props) => {
         <input
           type="text"
           id="searchinput"
-          placeholder="Buscar album"
+          placeholder="Introduce un artista"
           value={props.search}
           onChange={props.handleInputChange}
           onKeyDown={props.handleKeyDown}

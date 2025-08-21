@@ -9,17 +9,20 @@ import { Routes, Route } from "react-router-dom";
 import useFetch from "./hooks/useFetch";
 
 const App = () => {
-  const {
-    albums = [],
-    loading,
-    error,
-  } = useFetch(
-    `https://corsproxy.io/?https://theaudiodb.com/api/v1/json/2/searchalbum.php?s=coldplay`
-  );
+ 
 
   const [librarysongs, setLibrary] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredSongs, setFilteredSongs] = useState([]); //aqui se manejaran los resultados de busqueda
+  const [query, setQuery] = useState(""); //para actualizar lo que el usuario busca
+
+   const {
+    albums = [],
+    loading,
+    error,
+  } = useFetch(
+    `https://corsproxy.io/?https://theaudiodb.com/api/v1/json/2/searchalbum.php?s=${query}`
+  );
 
   // Función para agregar una canción a la biblioteca
   const addToLibrary = (album) => {
@@ -28,9 +31,25 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    setFilteredSongs(albums); //efecto secundario que cambia los resultados de búsqueda al cargar las canciones
-  }, [albums]);
+useEffect(() => {
+  // Si la API no devuelve nada, limpia los resultados
+  if (!albums || albums.length === 0) {
+    setFilteredSongs([]);
+    return;
+  }
+  // Si no hay búsqueda, muestra todos los álbumes obtenidos
+  if (search.trim() === "") {
+    setFilteredSongs(albums);
+    return;
+  }
+  // Filtra localmente por nombre de álbum o artista
+  const results = albums.filter(
+    (album) =>
+      album.strAlbum?.toLowerCase().includes(search.toLowerCase()) ||
+      album.strArtist?.toLowerCase().includes(search.toLowerCase())
+  );
+  setFilteredSongs(results);
+}, [albums, search]);
 
   useEffect(() => {
     if (librarysongs.length > 0) {
@@ -46,22 +65,8 @@ const App = () => {
 
   // Handler para buscar
   const handleSearch = () => {
-    if (search.trim() === "") {
-      setFilteredSongs(albums);
-      return;
-    }
-    const results = albums.filter(
-      (album) =>
-        album.strAlbum.toLowerCase().includes(search.toLowerCase()) ||
-        album.strArtist.toLowerCase().includes(search.toLowerCase())
-    );
-    if (results.length === 0) {
-      alert("No se encontraron resultados");
-      setFilteredSongs(albums);
-    } else {
-      setFilteredSongs(results);
-    }
-  };
+  setQuery(search); // Actualiza la búsqueda en la API
+};
 
   // Permite buscar al presionar Enter
   const handleKeyDown = (e) => {
