@@ -3,7 +3,7 @@ import Header from "./components/header/Header";
 import SearchResults from "./components/searchResults/searchResults";
 import Library from "./components/library/Library";
 import AlbumDetail from "./components/albumDetail/AlbumDetail";
-import SongDetail from "./components/songDetail/songDetail";
+import SongDetail from "./components/songDetail/SongDetail";
 
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -12,9 +12,9 @@ import useFetch from "./hooks/useFetch";
 const App = () => {
  
 
-  const [librarysongs, setLibrary] = useState([]);
+  const [libraryalbums, setLibrary] = useState([]);
   const [search, setSearch] = useState("");
-  const [filteredSongs, setFilteredSongs] = useState([]); //aqui se manejaran los resultados de busqueda
+  const [filteredAlbums, setFilteredAlbums] = useState([]); //aqui se manejaran los resultados de busqueda
   const [query, setQuery] = useState(""); //para actualizar lo que el usuario busca
 
    const {
@@ -27,20 +27,20 @@ const App = () => {
 
   // Función para agregar una canción a la biblioteca
   const addToLibrary = (album) => {
-    if (!librarysongs.some((s) => s.idAlbum === album.id)) {
-      setLibrary([...librarysongs, album]);
+    if (!libraryalbums.some((s) => s.idAlbum === album.id)) {
+      setLibrary([...libraryalbums, album]);
     }
   };
 
 useEffect(() => {
   // Si la API no devuelve nada, limpia los resultados
   if (!albums || albums.length === 0) {
-    setFilteredSongs([]);
+    setFilteredAlbums([]);
     return;
   }
   // Si no hay búsqueda, muestra todos los álbumes obtenidos
   if (search.trim() === "") {
-    setFilteredSongs(albums);
+    setFilteredAlbums(albums);
     return;
   }
   // Filtra localmente por nombre de álbum o artista
@@ -49,15 +49,15 @@ useEffect(() => {
       album.strAlbum?.toLowerCase().includes(search.toLowerCase()) ||
       album.strArtist?.toLowerCase().includes(search.toLowerCase())
   );
-  setFilteredSongs(results);
+  setFilteredAlbums(results);
 }, [albums, search]);
 
   useEffect(() => {
-    if (librarysongs.length > 0) {
+    if (libraryalbums.length > 0) {
       console.log("Se ha agregado una canción a la biblioteca");
       alert("Cancion agregada a la biblioteca");
     }
-  }, [librarysongs]);
+  }, [libraryalbums]);
 
   // Handler para el input de búsqueda
   const handleInputChange = (e) => {
@@ -87,9 +87,9 @@ useEffect(() => {
           path="/"
           element={
             <>
-              <Library songs={librarysongs} />
+              <Library albums={libraryalbums} />
               <SearchResults
-                albums={filteredSongs}
+                albums={filteredAlbums}
                 onAddToLibrary={addToLibrary}
                 search={search}
                 handleInputChange={handleInputChange}

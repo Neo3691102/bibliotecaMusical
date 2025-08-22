@@ -7,7 +7,7 @@ const SearchResults = (props) => {
     <>
       
       <div className="searchcontainer">
-        <label htmlFor="searchinput">Buscar album</label>
+        <label htmlFor="searchinput">Buscar artista</label>
         <input
           type="text"
           id="searchinput"
