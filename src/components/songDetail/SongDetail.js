@@ -1,72 +1,62 @@
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import songdetail from './songdetail.css';
+import songdetail from '../songDetail/songdetail.css';
 
-const SongDetail = ({ albums }) => {
+const SongDetail = () => {
   const { id } = useParams();
-
-  // Busca el álbum actual
-  const album = albums.find((a) => String(a.idAlbum) === String(id));
-
-  // Estado para las canciones
-  const [tracks, setTracks] = useState([]);
+  const [song, setSong] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Petición para obtener las canciones del álbum
   useEffect(() => {
-    const fetchTracks = async () => {
+    const fetchSong = async () => {
       setLoading(true);
       setError(null);
       try {
         const response = await axios.get(
-          `https://www.theaudiodb.com/api/v1/json/2/track.php?m=${id}`
+          `https://www.theaudiodb.com/api/v1/json/2/track.php?h=${id}`
         );
-        setTracks(response.data.track || []);
+        console.log(song);
+        setSong(response.data.track ? response.data.track[0] : null);
       } catch (err) {
         setError(err);
       }
       setLoading(false);
     };
-    fetchTracks();
+    fetchSong();
   }, [id]);
 
-  if (!album) return <div>No se encontró el álbum.</div>;
-  if (loading) return <div>Cargando canciones...</div>;
-  if (error) return <div>Error al cargar canciones.</div>;
+  if (loading) return <div>Cargando detalles de la canción...</div>;
+  if (error) return <div>Error al cargar detalles.</div>;
+  if (!song) return <div>No se encontró la canción.</div>;
 
   return (
-    <>
-      <div className="sdetailcard">
-        <img className="picture" src={album.strAlbumThumb} alt={album.strAlbum} style={{ width: 200 }} />
-        <h2 className="songTitle">{album.strAlbum}</h2>
-        <p className="artist">{album.strArtist}</p>
-      </div>
-      <h3 className="subtitle">Canciones del álbum:</h3>
-      <table className="songTable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Título</th>
-            <th>Artista</th>
-            <th>Duración (ms)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tracks.map((track) => (
-            <tr key={track.idTrack}>
-              <td>{track.intTrackNumber}</td>
-              <td>{track.strTrack}</td>
-              <td>{track.strArtist}</td>
-              <td>{track.intDuration}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <Link className="back" to="/">Regresar</Link>
-    </>
+    <div className="song-detail-card">
+        <div className="container">
+            <img src={song.strTrackThumb} alt={song.strTrack} />
+
+            <div className="infocontainer">
+             <h2>{song.strTrack}</h2>
+            <p><strong>Artista:</strong> {song.strArtist}</p>
+            <p><strong>Álbum:</strong> {song.strAlbum}</p>
+            <p><strong>Duración:</strong> {song.intDuration} ms</p>
+            <p><strong>Género:</strong> {song.strGenre}</p>
+           
+     </div>
+     
+        </div>
+        
+      <p className="descripcion"><strong>Descripción:</strong> {song.strDescriptionEN || "No disponible"}</p>
+      
+     
+ 
+        <div className="btncontainer">
+            <Link to={`/album/${song.idAlbum}`} className="btn">Volver al álbum</Link>
+            <Link to="/" className="btn">Regresar al inicio</Link>
+        </div>
+      
+    </div>
   );
 };
 

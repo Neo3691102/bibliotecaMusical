@@ -2,8 +2,9 @@ import "./App.css";
 import Header from "./components/header/Header";
 import SearchResults from "./components/searchResults/searchResults";
 import Library from "./components/library/Library";
-import SongDetail from "./components/songDetail/SongDetail";
-import picture from "./img/beethoven-ludwig-van.jpg";
+import AlbumDetail from "./components/albumDetail/AlbumDetail";
+import SongDetail from "./components/songDetail/songDetail";
+
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import useFetch from "./hooks/useFetch";
@@ -21,7 +22,7 @@ const App = () => {
     loading,
     error,
   } = useFetch(
-    `https://corsproxy.io/?https://theaudiodb.com/api/v1/json/2/searchalbum.php?s=${query}`
+    `https://www.theaudiodb.com/api/v1/json/2/searchalbum.php?s=${query}`
   );
 
   // Función para agregar una canción a la biblioteca
@@ -98,7 +99,8 @@ useEffect(() => {
             </>
           }
         />
-        <Route path="/song/:id" element={<SongDetail albums={albums} />} />
+        <Route path="/album/:id" element={<AlbumDetail albums={albums} />} />
+        <Route path="/album/:albumId/song/:id" element={<SongDetail />} />
       </Routes>
     </>
   );

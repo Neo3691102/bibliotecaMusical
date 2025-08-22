@@ -1,4 +1,4 @@
-.songCard{
+.albumCard{
   width: 240px;
   height: 450px;
   background-color: rgb(64, 65, 78);
@@ -11,21 +11,22 @@
   gap: 3px;
 }
 
-.songTitle {
+.albumtitle {
   margin: 0; 
   padding: 0;
   color: white;
+  font-size: 18px;
 }
 
 .artist{
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
   margin: 0;
   padding: 0;
   color: white;
 }
 
-.album{
+.title{
   margin: 0;
   padding: 0;
   color: white;

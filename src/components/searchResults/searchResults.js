@@ -1,4 +1,4 @@
-import Song from "../song/Song";
+import Album from "../album/Album";
 import style from "./style.css";
 
 
@@ -23,7 +23,7 @@ const SearchResults = (props) => {
 
       <div className="songList">
         {props.albums.map((album) => (
-          <Song
+          <Album
             key={album.id}
             {...album}
             onAddToLibrary={() => props.onAddToLibrary(album)}
