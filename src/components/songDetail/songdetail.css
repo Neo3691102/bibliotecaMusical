@@ -1,5 +1,5 @@
 .song-detail-card{
-    width: 80%;
+    width: 50%;
     
     
     display: flex;
@@ -18,7 +18,7 @@
     gap: 20px;
     justify-content: space-evenly;
     align-items: center;
-    width: 50%;
+    width: 80%;
 }
 
 .song-detail-card img {
@@ -67,4 +67,24 @@
     padding: 6px 14px;
     border-radius: 5px;
     text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        padding: 20px;
+    }
+
+    .song-detail-card {
+        width: 90%;
+    }
+
+    .song-detail-card img {
+        width: 90px;
+        height: 90px;
+    }
 }
