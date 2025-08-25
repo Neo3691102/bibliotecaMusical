@@ -1,4 +1,4 @@
-import Song from "../song/Song";
+import Album from "../album/Album";
 import style from "./style.css";
 
 
@@ -7,11 +7,11 @@ const SearchResults = (props) => {
     <>
       
       <div className="searchcontainer">
-        <label htmlFor="searchinput">Buscar album</label>
+        <label htmlFor="searchinput">Buscar artista</label>
         <input
           type="text"
           id="searchinput"
-          placeholder="Buscar album"
+          placeholder="Introduce un artista"
           value={props.search}
           onChange={props.handleInputChange}
           onKeyDown={props.handleKeyDown}
@@ -23,7 +23,7 @@ const SearchResults = (props) => {
 
       <div className="songList">
         {props.albums.map((album) => (
-          <Song
+          <Album
             key={album.id}
             {...album}
             onAddToLibrary={() => props.onAddToLibrary(album)}

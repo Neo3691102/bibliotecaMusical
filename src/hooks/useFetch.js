@@ -9,6 +9,7 @@ const useFetch = (url) => {
     useEffect(() => {
         const fetchAlbums = async () => {
             try{
+                console.log(url);
                 const response = await axios.get(url);
                 setAlbums(response.data.album || []);
                 console.log(response.data.album);
