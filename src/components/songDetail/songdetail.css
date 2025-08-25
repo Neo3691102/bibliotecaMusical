@@ -97,5 +97,9 @@
     .songTable{
       font-size: 12px;
     }
+
+    .btncontainer{
+        gap: 9px;
+    }
 }
 
