@@ -59,14 +59,7 @@
     text-decoration: none;
 }
 
-<<<<<<< HEAD
-@media screen and (max-width: 480px){
-  .sdetailcard {
-    width: 90%;
-    text-align: center;
-  }
-}
-=======
+
 .btn{
     width: 120px;
     display: block;
@@ -78,6 +71,11 @@
 }
 
 @media screen and (max-width: 480px) {
+
+  .sdetailcard {
+    width: 90%;
+    text-align: center;
+  }
 
     .container {
         flex-direction: column;
@@ -95,5 +93,9 @@
         width: 90px;
         height: 90px;
     }
+
+    .songTable{
+      font-size: 12px;
+    }
 }
->>>>>>> 4208023fe245a7a50d8e494753e8c81f131647f4
+
