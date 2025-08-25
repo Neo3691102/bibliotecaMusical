@@ -58,3 +58,10 @@
 .songTable tr:nth-child(even) {
   background: #f9f9f9;
 }
+
+@media screen and (max-width: 480px){
+  .sdetailcard {
+    width: 90%;
+    text-align: center;
+  }
+}
