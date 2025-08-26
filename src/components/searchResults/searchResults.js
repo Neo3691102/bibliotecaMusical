@@ -16,7 +16,7 @@ const SearchResults = (props) => {
           onChange={props.handleInputChange}
           onKeyDown={props.handleKeyDown}
         />
-        <button className="searchbutton" onClick={props.handleSearch}>
+        <button className="text-white" onClick={props.handleSearch}>
           Buscar
         </button>
       </div>
