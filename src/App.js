@@ -1,5 +1,5 @@
 import "./App.css";
-import "./style.scss";
+
 import Header from "./components/header/Header";
 import SearchResults from "./components/searchResults/searchResults";
 import Library from "./components/library/Library";
@@ -9,6 +9,8 @@ import SongDetail from "./components/songDetail/SongDetail";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import useFetch from "./hooks/useFetch";
+
+
 
 const App = () => {
  
