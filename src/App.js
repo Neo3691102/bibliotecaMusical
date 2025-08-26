@@ -1,4 +1,5 @@
 import "./App.css";
+import "./style.scss";
 import Header from "./components/header/Header";
 import SearchResults from "./components/searchResults/searchResults";
 import Library from "./components/library/Library";
