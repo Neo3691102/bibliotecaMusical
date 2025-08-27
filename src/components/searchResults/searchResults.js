@@ -1,5 +1,6 @@
 import Album from "../album/Album";
 import style from "./style.css";
+import { SearchButton } from "./styles";
 
 
 const SearchResults = (props) => {
@@ -16,9 +17,12 @@ const SearchResults = (props) => {
           onChange={props.handleInputChange}
           onKeyDown={props.handleKeyDown}
         />
-        <button className="searchbutton" onClick={props.handleSearch}>
-          Buscar
-        </button>
+
+        <SearchButton onClick={props.handleSearch}>Buscar</SearchButton>
+        {/* <button className="searchbutton" onClick={props.handleSearch} > */}
+
+        
+         
       </div>
 
       <div className="songList">

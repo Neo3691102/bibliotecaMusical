@@ -30,13 +30,7 @@ input[type="text"] {
   border: 1px solid white;
 }
 
-.searchbutton {
-  
-  background-color: black;
-  padding: 6px;
-  border-radius: 9px;
-  font-size: 20px;
-}
+
 
 .searchbutton:hover {
   background-color: rgb(64, 65, 78);
