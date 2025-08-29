@@ -1,9 +1,9 @@
-const Theme = () => {
-    colors {
-        primary: '#40414E'
-    }
-    font {
-        base: "Roboto", sans-serif;
+const Theme =  {
+    colors: {
+        primary: '#40414E',
+    },
+    font: {
+        base: "Roboto, sans-serif"
     }
 }
 
