@@ -1,14 +1,14 @@
-import style from "./style.css";
-import LibraryAlbum from "../libraryAlbum/libraryAlbum";
 
+import LibraryAlbum from "../libraryAlbum/libraryAlbum";
+import { LibraryDiv, LibraryContainer, LibraryTitle } from "./LibraryStyles";
 const Library = (props) => {
     return(
-        <div className="library">
-            <h2 className="library__title">Albums</h2>
-                <div className="library__container">
+        <LibraryDiv>
+            <LibraryTitle>Albums</LibraryTitle>
+                <LibraryContainer>
                     <LibraryAlbum albums={props.albums} />
-                </div>
-        </div>
+                </LibraryContainer>
+        </LibraryDiv>
             
                 
            
