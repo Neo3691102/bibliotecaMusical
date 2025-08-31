@@ -2,7 +2,17 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import albumdetail from './albumdetail.css';
+
+import { AlbumDetailDiv, 
+  AlbumPicture, 
+  AlbumTitle, 
+  AlbumArtist, 
+  AlbumYear, 
+  Subtitle,
+  SongTable,
+  DetailLink,
+  BotonBack
+} from "./AlbumDetailStyles";
 
 const AlbumDetail = ({ albums }) => {
   const { id } = useParams();
@@ -39,14 +49,14 @@ const AlbumDetail = ({ albums }) => {
 
   return (
     <>
-      <div className="sdetailcard">
-        <img className="picture" src={album.strAlbumThumb} alt={album.strAlbum} style={{ width: 200 }} />
-        <h2 className="albumTitle">{album.strAlbum}</h2>
-        <p className="artist">{album.strArtist}</p>
-        <p className="year">{album.intYearReleased}</p>
-      </div>
-      <h3 className="subtitle">Canciones del álbum:</h3>
-      <table className="songTable">
+      <AlbumDetailDiv>
+        <AlbumPicture src={album.strAlbumThumb} alt={album.strAlbum} />
+        <AlbumTitle>{album.strAlbum}</AlbumTitle>
+        <AlbumArtist>{album.strArtist}</AlbumArtist>
+        <AlbumYear>{album.intYearReleased}</AlbumYear>
+      </AlbumDetailDiv>
+      <Subtitle>Canciones del álbum:</Subtitle>
+      <SongTable>
         <thead>
           <tr>
             <th>#</th>
@@ -62,14 +72,14 @@ const AlbumDetail = ({ albums }) => {
               <td>{track.strTrack}</td>
               <td>{track.strArtist}</td>
               <td>{track.intDuration}</td>
-              <td><Link to={`/album/${album.idAlbum}/song/${track.idTrack}`} className="botondetalles">
+              <td><DetailLink to={`/album/${album.idAlbum}/song/${track.idTrack}`} >
     detalles
-  </Link></td>
+  </DetailLink></td>
             </tr>
           ))}
         </tbody>
-      </table>
-      <Link className="back" to="/">Regresar</Link>
+      </SongTable>
+      <BotonBack to="/">Regresar</BotonBack>
     </>
   );
 };
