@@ -1,7 +1,14 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import songdetail from '../songDetail/songdetail.css';
+
+import {
+  SongDetailCard,
+  Container,
+  Descripcion,
+  BtnContainer,
+  BackLink,
+} from "./SongDetailStyles";
 
 const SongDetail = () => {
   const { id } = useParams();
@@ -32,31 +39,36 @@ const SongDetail = () => {
   if (!song) return <div>No se encontró la canción.</div>;
 
   return (
-    <div className="song-detail-card">
-        <div className="container">
-            <img src={song.strTrackThumb} alt={song.strTrack} />
+    <SongDetailCard>
+      <Container>
+        <img src={song.strTrackThumb} alt={song.strTrack} />
 
-            <div className="infocontainer">
-             <h2>{song.strTrack}</h2>
-            <p><strong>Artista:</strong> {song.strArtist}</p>
-            <p><strong>Álbum:</strong> {song.strAlbum}</p>
-            <p><strong>Duración:</strong> {song.intDuration} ms</p>
-            <p><strong>Género:</strong> {song.strGenre}</p>
-           
-     </div>
-     
+        <div className="infocontainer">
+          <h2>{song.strTrack}</h2>
+          <p>
+            <strong>Artista:</strong> {song.strArtist}
+          </p>
+          <p>
+            <strong>Álbum:</strong> {song.strAlbum}
+          </p>
+          <p>
+            <strong>Duración:</strong> {song.intDuration} ms
+          </p>
+          <p>
+            <strong>Género:</strong> {song.strGenre}
+          </p>
         </div>
-        
-      <p className="descripcion"><strong>Descripción:</strong> {song.strDescriptionEN || "No disponible"}</p>
-      
-     
- 
-        <div className="btncontainer">
-            <Link to={`/album/${song.idAlbum}`} className="btn">Volver al álbum</Link>
-            <Link to="/" className="btn">Regresar al inicio</Link>
-        </div>
-      
-    </div>
+      </Container>
+
+      <Descripcion>
+        <strong>Descripción:</strong> {song.strDescriptionEN || "No disponible"}
+      </Descripcion>
+
+      <BtnContainer>
+        <BackLink to={`/album/${song.idAlbum}`}>Volver al álbum</BackLink>
+        <BackLink to="/">Regresar al inicio</BackLink>
+      </BtnContainer>
+    </SongDetailCard>
   );
 };
 
