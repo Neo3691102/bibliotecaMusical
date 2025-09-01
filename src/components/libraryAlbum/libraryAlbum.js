@@ -1,27 +1,31 @@
-import style from "./style.css";
+import {
+  LibraryAlbumDiv,
+  LibrarySongCard,
+  LibrarySongPicture,
+  LibrarySongTitle,
+  LibrarySongArtist,
+  LibrarySongDuration,
+} from "./LibraryAlbumStyles";
 
 const libraryAlbum = (props) => {
-    
-    return(
-       
-            <div className="librarysong__container">
-                {props.albums.map( album => {
-                    const {id, strAlbum, strArtist, strGenre, strAlbumThumb} = album;
-                        return(
-                            <>
-                                <div className="librarysongcard" key={id}>
-                                    <img className="librarysong__picture" src={strAlbumThumb} alt="imagen"/>
-                                    <h2 className="librarysong__songTitle">{strAlbum}</h2>
-                                    <p className="librarysong__artist">{strArtist}</p>
-                               
-                                    <p className="librarysong__duration">{strGenre}</p>
-                                </div>
-                            </>
-                        )
-                        
-                })}
-            </div>
-    )
-}
+  return (
+    <LibraryAlbumDiv>
+      {props.albums.map((album) => {
+        const { id, strAlbum, strArtist, strGenre, strAlbumThumb } = album;
+        return (
+          <>
+            <LibrarySongCard key={id}>
+              <LibrarySongPicture src={strAlbumThumb} alt="imagen" />
+              <LibrarySongTitle>{strAlbum}</LibrarySongTitle>
+              <LibrarySongArtist>{strArtist}</LibrarySongArtist>
+
+              <LibrarySongDuration>{strGenre}</LibrarySongDuration>
+            </LibrarySongCard>
+          </>
+        );
+      })}
+    </LibraryAlbumDiv>
+  );
+};
 
 export default libraryAlbum;
