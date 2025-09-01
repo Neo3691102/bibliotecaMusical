@@ -19,7 +19,14 @@ const Input = styled.input`
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
-  border: 1px solid white;
+  border: 3px solid white;
+
+  ${(props) => (props.hasValue ? "green" : "red")};
+  outline: none;
+
+  &:focus {
+    border-color: ${(props) => (props.hasValue ? "blue" : "red")};
+  }
 `;
 
 const SongList = styled.div`

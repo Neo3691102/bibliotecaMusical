@@ -7,7 +7,6 @@ import {
   SearchButton,
 } from "./SearchResultsStyles";
 
-
 const SearchResults = (props) => {
   return (
     <>
@@ -20,7 +19,9 @@ const SearchResults = (props) => {
           value={props.search}
           onChange={props.handleInputChange}
           onKeyDown={props.handleKeyDown}
+          hasValue={props.search.length > 0}
         />
+
         <SearchButton onClick={props.handleSearch}>Buscar</SearchButton>
         {/* <button className="searchbutton" onClick={props.handleSearch} > */}
       </SearchResultsContainer>
