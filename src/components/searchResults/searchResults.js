@@ -1,15 +1,19 @@
 import Album from "../album/Album";
-import style from "./style.css";
-import { SearchButton } from "./styles";
+import {
+  Input,
+  Label,
+  SearchResultsContainer,
+  SongList,
+  SearchButton,
+} from "./SearchResultsStyles";
 
 
 const SearchResults = (props) => {
   return (
     <>
-      
-      <div className="searchcontainer">
-        <label htmlFor="searchinput">Buscar artista</label>
-        <input
+      <SearchResultsContainer>
+        <Label htmlFor="searchinput">Buscar artista</Label>
+        <Input
           type="text"
           id="searchinput"
           placeholder="Introduce un artista"
@@ -17,15 +21,11 @@ const SearchResults = (props) => {
           onChange={props.handleInputChange}
           onKeyDown={props.handleKeyDown}
         />
-
         <SearchButton onClick={props.handleSearch}>Buscar</SearchButton>
         {/* <button className="searchbutton" onClick={props.handleSearch} > */}
+      </SearchResultsContainer>
 
-        
-         
-      </div>
-
-      <div className="songList">
+      <SongList>
         {props.albums.map((album) => (
           <Album
             key={album.id}
@@ -33,7 +33,7 @@ const SearchResults = (props) => {
             onAddToLibrary={() => props.onAddToLibrary(album)}
           />
         ))}
-      </div>
+      </SongList>
     </>
   );
 };
