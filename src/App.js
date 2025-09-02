@@ -80,7 +80,9 @@ useEffect(() => {
   };
 
   if (loading) return <div>Cargando...</div>;
-  if (error) return <div>Error al cargar canciones</div>;
+  if (error) return <div>
+    <h1 style={{ color: "white" }}>Error al cargar canciones</h1>
+  </div>;
 
   return (
     <>
