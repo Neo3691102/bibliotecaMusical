@@ -82,7 +82,7 @@ useEffect(() => {
 
   if (loading) return <Spinner />;
   if (error) return <div>
-    <h1 style={{ color: "white" }}>Error al cargar canciones</h1>
+    <h1 style={{ color: "white", textAlign: "center" }}>Error al cargar canciones</h1>
   </div>;
 
   return (
