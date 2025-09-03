@@ -5,6 +5,7 @@ import SearchResults from "./components/searchResults/searchResults";
 import Library from "./components/library/Library";
 import AlbumDetail from "./components/albumDetail/AlbumDetail";
 import SongDetail from "./components/songDetail/SongDetail";
+import Spinner from "./components/Spinner/Loading"
 
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -79,7 +80,7 @@ useEffect(() => {
     }
   };
 
-  if (loading) return <div>Cargando...</div>;
+  if (loading) return <Spinner />;
   if (error) return <div>
     <h1 style={{ color: "white" }}>Error al cargar canciones</h1>
   </div>;
