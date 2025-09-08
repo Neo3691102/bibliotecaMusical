@@ -18,7 +18,7 @@ const Label = styled.label`
 const Input = styled.input`
   padding: 10px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 3px solid white;
 
   ${(props) => (props.hasValue ? "green" : "red")};
