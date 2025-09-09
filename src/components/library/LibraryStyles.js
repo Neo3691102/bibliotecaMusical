@@ -13,8 +13,8 @@ const LibraryDiv = styled.div`
 
 const LibraryTitle = styled.h2`
   color: rgba(199, 194, 194, 0.973);
-  padding: 18px;
-  border-bottom: 2px solid rgba(199, 194, 194, 0.973);
+  padding: 21px;
+  border-bottom: 3px solid rgba(199, 194, 194, 0.973);
   text-align: center;
 `;
 
