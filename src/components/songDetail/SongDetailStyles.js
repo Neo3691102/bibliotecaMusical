@@ -17,8 +17,8 @@ const SongDetailCard = styled.div`
     border-radius: 9px 9px 0 0;
 
     @media screen and (max-width: 480px) {
-      width: 90px;
-      height: 90px;
+      width: 93px;
+      height: 93px;
     }
   }
 
