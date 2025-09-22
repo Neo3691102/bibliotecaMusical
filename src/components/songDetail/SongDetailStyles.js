@@ -47,7 +47,7 @@ const Container = styled.div`
 `;
 
 const Descripcion = styled.p`
-  padding: 18px;
+  padding: 21px;
 `;
 
 const BtnContainer = styled.div`
