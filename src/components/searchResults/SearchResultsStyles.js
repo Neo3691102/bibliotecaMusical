@@ -18,7 +18,7 @@ const Label = styled.label`
 const Input = styled.input`
   padding: 10px;
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 9px;
   border: 3px solid white;
 
   ${(props) => (props.hasValue ? "green" : "red")};
@@ -45,7 +45,7 @@ const SongList = styled.div`
 
 const SearchButton = styled.button`
   background-color: black;
-  padding: 6px;
+  padding: 9px;
   border-radius: 9px;
   font-size: 20px;
   color: white;
