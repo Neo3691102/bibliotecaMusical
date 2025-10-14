@@ -4,7 +4,7 @@ const LibraryDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 24px;
 
   @media screen and (max-width: 480px){
     width: 90%;
