@@ -45,8 +45,10 @@ const Subtitle = styled.h3`
 const SongTable = styled.table`
   width: 80%;
   border-collapse: collapse;
-  background: white;
+  background-color: white;
   margin: 0 auto;
+
+  
 
   th, td {
     border: 1px solid #ccc;
@@ -55,13 +57,13 @@ const SongTable = styled.table`
   }
 
   th {
-    background: #fff;
-    color: #000;
+    background: black;
+    color: white;
     font-weight: bold;
   }
 
-  tr:nth-child(even) {
-    background: #f9f9f9;
+  tr{
+    background-color: white;
   }
 
   @media screen and (max-width: 480px) {
