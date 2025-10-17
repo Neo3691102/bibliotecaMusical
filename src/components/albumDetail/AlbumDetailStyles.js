@@ -49,11 +49,13 @@ const SongTable = styled.table`
   margin: 0 auto;
   font-weight: bold;
   
+  
 
   th, td {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: left;
+    text-align: center;
   }
 
   th {
