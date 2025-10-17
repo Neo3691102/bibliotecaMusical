@@ -47,7 +47,7 @@ const SongTable = styled.table`
   border-collapse: collapse;
   background-color: white;
   margin: 0 auto;
-
+  font-weight: bold;
   
 
   th, td {
